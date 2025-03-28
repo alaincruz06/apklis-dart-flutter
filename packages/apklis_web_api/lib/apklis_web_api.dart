@@ -8,7 +8,7 @@ abstract class ApklisWebApi {
   static Uri buildUri(List<String> apps) {
     final uri = Uri.https(
       'api.apklis.cu',
-      'v2/application',
+      'v3/application',
       {'package_name': apps},
     );
     return uri;

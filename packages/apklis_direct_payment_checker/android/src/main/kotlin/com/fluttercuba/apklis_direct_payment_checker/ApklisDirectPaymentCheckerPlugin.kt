@@ -26,7 +26,7 @@ class ApklisDirectPaymentCheckerPlugin : FlutterPlugin, MethodCallHandler {
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
             "isPurchased" -> {
-                val packageId = call.arguments<String>()
+                val packageId = call.arguments<String>() ?: ""
                 val response = Verify.isPurchased(context, packageId)
                 val hashMap = HashMap<String, Any?>()
                 hashMap["paid"] = response.first

@@ -15,7 +15,7 @@ void main() {
   test('check build uri', () {
     final apps = ['com.example.app1', 'com.example.app2'];
     final queryString = apps.map((e) => 'package_name=$e').join('&');
-    final url = '${ApklisWebApi.API_URL}/v2/application?$queryString';
+    final url = '${ApklisWebApi.API_URL}/v3/application?$queryString';
     final uri = ApklisWebApi.buildUri(apps);
     expect(uri.toString(), url);
   });

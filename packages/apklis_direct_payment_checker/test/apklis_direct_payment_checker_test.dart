@@ -9,13 +9,16 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+    handler(MethodCall methodCall) async {
       return {
         'paid': false,
         'username': 'example',
       };
-    });
-    PackageInfo.disablePackageInfoPlatformOverride = true;
+    }
+
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, handler);
+
     PackageInfo.setMockInitialValues(
       appName: 'App Example',
       packageName: 'com.example.nova.prosalud',
@@ -26,8 +29,11 @@ void main() {
   });
 
   tearDown(() {
-    channel.setMockMethodCallHandler(null);
-    PackageInfo.disablePackageInfoPlatformOverride = false;
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+      channel,
+      null,
+    );
   });
 
   test('isPurchased with packageId', () async {

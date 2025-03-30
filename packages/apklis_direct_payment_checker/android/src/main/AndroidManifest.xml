@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fluttercuba.apklis_direct_payment_checker">
+    <queries>
+        <package android:name="cu.uci.android.apklis" />
+        <provider android:authorities="cu.uci.android.apklis.PaymentProvider" />
+    </queries>
 
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
 </manifest>
